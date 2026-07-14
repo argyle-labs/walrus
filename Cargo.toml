@@ -1,0 +1,33 @@
+[package]
+name = "walrus"
+version = "0.1.0"
+edition = "2024"
+description = "macOS workstation provisioning diagnostics/repair for orca — Homebrew toolchain (formulae + casks), Node, Claude Code"
+
+[package.metadata.orca]
+category = "workstation"
+
+[lib]
+name = "walrus"
+path = "src/lib.rs"
+# rlib retains the in-crate #[cfg(test)] harness; the plugin ships as a [[bin]]
+# served over the orca socket (see src/main.rs).
+crate-type = ["rlib"]
+
+[[bin]]
+name = "walrus"
+path = "src/main.rs"
+
+# walrus is a hybrid plugin: an (empty) `walrus.` tool surface plus one `diagnostics`
+# domain backend (src/registration.rs). It inspects the local macOS box and emits
+# typed findings + repairs through orca's diagnostics contract.
+[dependencies]
+plugin-toolkit = { git = "https://github.com/argyle-labs/orca", branch = "main" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+plugin-toolkit = { git = "https://github.com/argyle-labs/orca", branch = "main" }
+
+[lints.clippy]
+let_underscore_must_use = "deny"
