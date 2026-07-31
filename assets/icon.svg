@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <clipPath id="tile"><rect x="16" y="16" width="480" height="480" rx="108"/></clipPath>
     <pattern id="argyle" width="120" height="160" patternUnits="userSpaceOnUse">
@@ -12,47 +12,63 @@
     </pattern>
   </defs>
   <g clip-path="url(#tile)"><rect x="16" y="16" width="480" height="480" fill="url(#argyle)"/></g>
-  <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#2BD3D3" stroke-width="6"/>
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#7CA0C8" stroke-width="6"/>
 
-  <!-- Walrus: flat single-glyph style (like raccoon) with the signature walrus
-       features — bulging bilobed muzzle pad, downturned mouth, big white
-       mustache, and two tusks. -->
-  <g clip-path="url(#tile)">
-    <!-- head: clean rounded dome, no neck -->
-    <path d="M256 100 C346 100 412 164 412 250 C412 322 356 384 256 384 C156 384 100 322 100 250 C100 164 166 100 256 100 Z" fill="#7CA0C8"/>
-    <!-- brow highlight -->
-    <path d="M256 100 C346 100 412 164 412 250 C412 262 410 274 406 285 C380 214 324 176 256 176 C188 176 132 214 106 285 C102 274 100 262 100 250 C100 164 166 100 256 100 Z" fill="#8FB1D2"/>
-    <!-- eyes -->
-    <circle cx="204" cy="216" r="15" fill="#0A1018"/>
-    <circle cx="308" cy="216" r="15" fill="#0A1018"/>
-    <!-- bilobed muzzle pad: the defining bulge -->
-    <g fill="#A9C5E1">
-      <circle cx="212" cy="322" r="74"/>
-      <circle cx="300" cy="322" r="74"/>
-      <rect x="212" y="248" width="88" height="148" rx="30"/>
+  <!-- Cute cartoon walrus in the raccoon/beaver line-art style: accent-blue fill
+       with dark outlines. Big friendly eyes + brows, broad bilobed muzzle with
+       whisker dots, dark nose, and the signature pair of tusks. -->
+  <g stroke-linejoin="round">
+    <!-- head dome -->
+    <path d="M256 112 C352 112 410 178 410 262 C410 330 366 384 256 384
+             C146 384 102 330 102 262 C102 178 160 112 256 112 Z"
+          fill="#7CA0C8" stroke="#0B1622" stroke-width="7"/>
+
+    <!-- brows -->
+    <g fill="none" stroke="#0B1622" stroke-width="7" stroke-linecap="round">
+      <path d="M180 182 Q206 166 232 180"/>
+      <path d="M280 180 Q306 166 332 182"/>
     </g>
-    <!-- philtrum split between the two pads -->
-    <path d="M256 286 V330" stroke="#8AAAC9" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
-    <!-- nose -->
-    <path d="M232 268 Q256 254 280 268 Q276 292 256 300 Q236 292 232 268 Z" fill="#0A1018"/>
-    <!-- downturned walrus mouth -->
-    <path d="M214 318 Q256 350 298 318" fill="none" stroke="#0A1018" stroke-width="7" stroke-linecap="round"/>
-    <!-- big white mustache draping the lower pads -->
-    <g fill="#F4F7FB">
-      <path d="M256 330 C244 356 214 372 184 366 C160 361 150 342 156 330 C176 350 214 348 236 328 C244 320 250 322 256 330 Z"/>
-      <path d="M256 330 C268 356 298 372 328 366 C352 361 362 342 356 330 C336 350 298 348 276 328 C268 320 262 322 256 330 Z"/>
+
+    <!-- eyes: dark with glossy catchlights -->
+    <ellipse cx="206" cy="212" rx="17" ry="21" fill="#0B1622"/>
+    <ellipse cx="306" cy="212" rx="17" ry="21" fill="#0B1622"/>
+    <circle cx="213" cy="204" r="7" fill="#EAF1F8"/>
+    <circle cx="313" cy="204" r="7" fill="#EAF1F8"/>
+    <circle cx="200" cy="219" r="3.5" fill="#EAF1F8"/>
+    <circle cx="300" cy="219" r="3.5" fill="#EAF1F8"/>
+
+    <!-- bilobed muzzle pad -->
+    <path d="M158 306
+             C154 268 176 248 208 250
+             C230 252 244 262 256 266
+             C268 262 282 252 304 250
+             C336 248 358 268 354 306
+             C352 346 326 380 300 382
+             C282 383 268 373 256 360
+             C244 373 230 383 212 382
+             C186 380 160 346 158 306 Z"
+          fill="#9DBBD9" stroke="#0B1622" stroke-width="7"/>
+    <!-- center crease between the two lobes -->
+    <path d="M256 300 L256 358" fill="none" stroke="#0B1622" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- nose sitting at the top-center of the muzzle -->
+    <path d="M226 254 C240 244 272 244 286 254 C296 262 294 280 280 288
+             C270 294 242 294 232 288 C218 280 216 262 226 254 Z" fill="#0B1622"/>
+
+    <!-- whisker dots -->
+    <g fill="#0B1622">
+      <circle cx="184" cy="316" r="4"/><circle cx="208" cy="324" r="4"/><circle cx="232" cy="318" r="4"/>
+      <circle cx="194" cy="342" r="4"/><circle cx="218" cy="348" r="4"/>
+      <circle cx="328" cy="316" r="4"/><circle cx="304" cy="324" r="4"/><circle cx="280" cy="318" r="4"/>
+      <circle cx="318" cy="342" r="4"/><circle cx="294" cy="348" r="4"/>
     </g>
-    <!-- whiskers over the mustache -->
-    <g stroke="#0A1018" stroke-width="3" stroke-linecap="round" opacity="0.45">
-      <path d="M212 344 q-40 2 -60 14"/>
-      <path d="M216 356 q-40 6 -56 20"/>
-      <path d="M300 344 q40 2 60 14"/>
-      <path d="M296 356 q40 6 56 20"/>
+
+    <!-- tusks -->
+    <g fill="#EAF1F8" stroke="#0B1622" stroke-width="5">
+      <path d="M236 348 C226 376 220 402 225 418 C226 425 214 425 211 417
+               C204 396 213 368 224 348 Z"/>
+      <path d="M276 348 C286 376 292 402 287 418 C286 425 298 425 301 417
+               C308 396 299 368 288 348 Z"/>
     </g>
-    <!-- tusks below the mustache -->
-    <path d="M226 366 C220 410 214 440 206 460 C193 440 193 402 206 366 Z" fill="#F4F7FB"/>
-    <path d="M286 366 C292 410 298 440 306 460 C319 440 319 402 306 366 Z" fill="#F4F7FB"/>
-    <path d="M222 370 C217 398 213 420 207 442" stroke="#CBD7E4" stroke-width="3.5" fill="none" opacity="0.7"/>
-    <path d="M290 370 C295 398 299 420 305 442" stroke="#CBD7E4" stroke-width="3.5" fill="none" opacity="0.7"/>
   </g>
 </svg>
