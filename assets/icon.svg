@@ -13,34 +13,46 @@
   </defs>
   <g clip-path="url(#tile)"><rect x="16" y="16" width="480" height="480" fill="url(#argyle)"/></g>
   <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#2BD3D3" stroke-width="6"/>
-  <!-- walrus: broad domed head, heavy bristly muzzle, long tusks, whiskers -->
-  <g>
-    <path d="M256 92
-             C342 92 410 152 410 238
-             C410 290 386 328 348 350
-             C366 358 378 372 378 392
-             L134 392 C134 372 146 358 164 350
-             C126 328 102 290 102 238
-             C102 152 170 92 256 92 Z" fill="#7CA0C8"/>
-    <path d="M256 92 C342 92 410 152 410 238 C410 252 408 266 404 279 C378 210 322 170 256 170 C190 170 134 210 108 279 C104 266 102 252 102 238 C102 152 170 92 256 92 Z" fill="#8FB1D2"/>
-    <circle cx="202" cy="228" r="15" fill="#0A1018"/>
-    <circle cx="310" cy="228" r="15" fill="#0A1018"/>
-    <ellipse cx="256" cy="340" rx="112" ry="82" fill="#A6C3E0"/>
-    <path d="M144 340 a112 82 0 0 1 224 0 Z" fill="#B4CEE7" opacity="0.55"/>
-    <ellipse cx="256" cy="302" rx="28" ry="18" fill="#0A1018"/>
-    <path d="M256 320 v22" stroke="#0A1018" stroke-width="6" stroke-linecap="round"/>
-    <!-- tusks: longer + thicker -->
-    <path d="M220 376 C213 424 206 458 198 478 C184 456 184 412 196 376 Z" fill="#F4F7FB"/>
-    <path d="M292 376 C299 424 306 458 314 478 C328 456 328 412 316 376 Z" fill="#F4F7FB"/>
-    <path d="M216 378 C211 406 207 428 201 448" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
-    <path d="M296 378 C301 406 305 428 311 448" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
-    <g stroke="#0A1018" stroke-width="4.5" stroke-linecap="round" opacity="0.6">
-      <path d="M192 332 q-56 4 -84 22"/>
-      <path d="M194 350 q-56 8 -82 30"/>
-      <path d="M196 368 q-52 14 -74 36"/>
-      <path d="M320 332 q56 4 84 22"/>
-      <path d="M318 350 q56 8 82 30"/>
-      <path d="M316 368 q52 14 74 36"/>
+
+  <!-- Walrus: flat single-glyph style (like raccoon) with the signature walrus
+       features — bulging bilobed muzzle pad, downturned mouth, big white
+       mustache, and two tusks. -->
+  <g clip-path="url(#tile)">
+    <!-- head: clean rounded dome, no neck -->
+    <path d="M256 100 C346 100 412 164 412 250 C412 322 356 384 256 384 C156 384 100 322 100 250 C100 164 166 100 256 100 Z" fill="#7CA0C8"/>
+    <!-- brow highlight -->
+    <path d="M256 100 C346 100 412 164 412 250 C412 262 410 274 406 285 C380 214 324 176 256 176 C188 176 132 214 106 285 C102 274 100 262 100 250 C100 164 166 100 256 100 Z" fill="#8FB1D2"/>
+    <!-- eyes -->
+    <circle cx="204" cy="216" r="15" fill="#0A1018"/>
+    <circle cx="308" cy="216" r="15" fill="#0A1018"/>
+    <!-- bilobed muzzle pad: the defining bulge -->
+    <g fill="#A9C5E1">
+      <circle cx="212" cy="322" r="74"/>
+      <circle cx="300" cy="322" r="74"/>
+      <rect x="212" y="248" width="88" height="148" rx="30"/>
     </g>
+    <!-- philtrum split between the two pads -->
+    <path d="M256 286 V330" stroke="#8AAAC9" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+    <!-- nose -->
+    <path d="M232 268 Q256 254 280 268 Q276 292 256 300 Q236 292 232 268 Z" fill="#0A1018"/>
+    <!-- downturned walrus mouth -->
+    <path d="M214 318 Q256 350 298 318" fill="none" stroke="#0A1018" stroke-width="7" stroke-linecap="round"/>
+    <!-- big white mustache draping the lower pads -->
+    <g fill="#F4F7FB">
+      <path d="M256 330 C244 356 214 372 184 366 C160 361 150 342 156 330 C176 350 214 348 236 328 C244 320 250 322 256 330 Z"/>
+      <path d="M256 330 C268 356 298 372 328 366 C352 361 362 342 356 330 C336 350 298 348 276 328 C268 320 262 322 256 330 Z"/>
+    </g>
+    <!-- whiskers over the mustache -->
+    <g stroke="#0A1018" stroke-width="3" stroke-linecap="round" opacity="0.45">
+      <path d="M212 344 q-40 2 -60 14"/>
+      <path d="M216 356 q-40 6 -56 20"/>
+      <path d="M300 344 q40 2 60 14"/>
+      <path d="M296 356 q40 6 56 20"/>
+    </g>
+    <!-- tusks below the mustache -->
+    <path d="M226 366 C220 410 214 440 206 460 C193 440 193 402 206 366 Z" fill="#F4F7FB"/>
+    <path d="M286 366 C292 410 298 440 306 460 C319 440 319 402 306 366 Z" fill="#F4F7FB"/>
+    <path d="M222 370 C217 398 213 420 207 442" stroke="#CBD7E4" stroke-width="3.5" fill="none" opacity="0.7"/>
+    <path d="M290 370 C295 398 299 420 305 442" stroke="#CBD7E4" stroke-width="3.5" fill="none" opacity="0.7"/>
   </g>
 </svg>
