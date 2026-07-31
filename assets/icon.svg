@@ -35,12 +35,13 @@
     <circle cx="211" cy="205" r="4" fill="#EAF1F8" opacity="0.9"/>
     <circle cx="311" cy="205" r="4" fill="#EAF1F8" opacity="0.9"/>
 
-    <!-- tusks: drawn BEFORE the muzzle so their tops tuck behind it -->
+    <!-- tusks: spread apart with a center gap, drawn BEFORE the muzzle so
+         their tops tuck behind it -->
     <g fill="#F1F5FA" stroke="#0B1622" stroke-width="6" stroke-linejoin="round">
-      <path d="M204 292 C191 352 191 414 206 456 C210 468 244 468 248 456
-               C263 414 263 352 250 292 Z"/>
-      <path d="M308 292 C321 352 321 414 306 456 C302 468 268 468 264 456
-               C249 414 249 352 262 292 Z"/>
+      <path d="M200 292 C191 352 191 416 204 456 C207 467 225 467 228 456
+               C240 416 240 352 230 292 Z"/>
+      <path d="M312 292 C321 352 321 416 308 456 C305 467 287 467 284 456
+               C272 416 272 352 282 292 Z"/>
     </g>
 
     <!-- bilobed muzzle pad -->
