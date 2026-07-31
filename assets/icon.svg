@@ -13,26 +13,34 @@
   </defs>
   <g clip-path="url(#tile)"><rect x="16" y="16" width="480" height="480" fill="url(#argyle)"/></g>
   <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#2BD3D3" stroke-width="6"/>
-  <!-- walrus: domed head, muzzle, two tusks, whiskers -->
+  <!-- walrus: broad domed head, heavy bristly muzzle, long tusks, whiskers -->
   <g>
-    <!-- head -->
-    <path d="M256 150 C322 150 366 196 366 258 C366 300 348 328 320 344 L192 344 C164 328 146 300 146 258 C146 196 190 150 256 150 Z" fill="#7CA0C8"/>
-    <!-- eyes -->
-    <circle cx="220" cy="232" r="12" fill="#0A1018"/>
-    <circle cx="292" cy="232" r="12" fill="#0A1018"/>
-    <!-- muzzle -->
-    <ellipse cx="256" cy="318" rx="74" ry="52" fill="#9FBEDC"/>
-    <!-- nose -->
-    <ellipse cx="256" cy="300" rx="20" ry="14" fill="#0A1018"/>
-    <!-- tusks -->
-    <path d="M232 344 C230 384 226 414 220 436 C214 414 214 378 218 344 Z" fill="#F4F7FB"/>
-    <path d="M280 344 C282 384 286 414 292 436 C298 414 298 378 294 344 Z" fill="#F4F7FB"/>
-    <!-- whiskers -->
-    <g stroke="#0A1018" stroke-width="4" stroke-linecap="round" opacity="0.65">
-      <path d="M212 322 q-40 6 -60 20"/>
-      <path d="M214 334 q-40 10 -58 28"/>
-      <path d="M300 322 q40 6 60 20"/>
-      <path d="M298 334 q40 10 58 28"/>
+    <path d="M256 92
+             C342 92 410 152 410 238
+             C410 290 386 328 348 350
+             C366 358 378 372 378 392
+             L134 392 C134 372 146 358 164 350
+             C126 328 102 290 102 238
+             C102 152 170 92 256 92 Z" fill="#7CA0C8"/>
+    <path d="M256 92 C342 92 410 152 410 238 C410 252 408 266 404 279 C378 210 322 170 256 170 C190 170 134 210 108 279 C104 266 102 252 102 238 C102 152 170 92 256 92 Z" fill="#8FB1D2"/>
+    <circle cx="202" cy="228" r="15" fill="#0A1018"/>
+    <circle cx="310" cy="228" r="15" fill="#0A1018"/>
+    <ellipse cx="256" cy="340" rx="112" ry="82" fill="#A6C3E0"/>
+    <path d="M144 340 a112 82 0 0 1 224 0 Z" fill="#B4CEE7" opacity="0.55"/>
+    <ellipse cx="256" cy="302" rx="28" ry="18" fill="#0A1018"/>
+    <path d="M256 320 v22" stroke="#0A1018" stroke-width="6" stroke-linecap="round"/>
+    <!-- tusks: longer + thicker -->
+    <path d="M218 376 C210 434 202 476 192 502 C176 474 176 418 190 376 Z" fill="#F4F7FB"/>
+    <path d="M294 376 C302 434 310 476 320 502 C336 474 336 418 322 376 Z" fill="#F4F7FB"/>
+    <path d="M214 378 C209 410 205 434 198 458" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
+    <path d="M298 378 C303 410 307 434 314 458" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
+    <g stroke="#0A1018" stroke-width="4.5" stroke-linecap="round" opacity="0.6">
+      <path d="M192 332 q-56 4 -84 22"/>
+      <path d="M194 350 q-56 8 -82 30"/>
+      <path d="M196 368 q-52 14 -74 36"/>
+      <path d="M320 332 q56 4 84 22"/>
+      <path d="M318 350 q56 8 82 30"/>
+      <path d="M316 368 q52 14 74 36"/>
     </g>
   </g>
 </svg>
