@@ -30,10 +30,10 @@
     <ellipse cx="256" cy="302" rx="28" ry="18" fill="#0A1018"/>
     <path d="M256 320 v22" stroke="#0A1018" stroke-width="6" stroke-linecap="round"/>
     <!-- tusks: longer + thicker -->
-    <path d="M218 376 C210 434 202 476 192 502 C176 474 176 418 190 376 Z" fill="#F4F7FB"/>
-    <path d="M294 376 C302 434 310 476 320 502 C336 474 336 418 322 376 Z" fill="#F4F7FB"/>
-    <path d="M214 378 C209 410 205 434 198 458" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
-    <path d="M298 378 C303 410 307 434 314 458" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
+    <path d="M220 376 C213 424 206 458 198 478 C184 456 184 412 196 376 Z" fill="#F4F7FB"/>
+    <path d="M292 376 C299 424 306 458 314 478 C328 456 328 412 316 376 Z" fill="#F4F7FB"/>
+    <path d="M216 378 C211 406 207 428 201 448" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
+    <path d="M296 378 C301 406 305 428 311 448" stroke="#CBD7E4" stroke-width="4" fill="none" opacity="0.7"/>
     <g stroke="#0A1018" stroke-width="4.5" stroke-linecap="round" opacity="0.6">
       <path d="M192 332 q-56 4 -84 22"/>
       <path d="M194 350 q-56 8 -82 30"/>
