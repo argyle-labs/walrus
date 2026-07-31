@@ -37,10 +37,10 @@
 
     <!-- tusks: drawn BEFORE the muzzle so their tops tuck behind it -->
     <g fill="#F1F5FA" stroke="#0B1622" stroke-width="6" stroke-linejoin="round">
-      <path d="M214 296 C204 350 204 404 216 440 C219 450 241 450 244 440
-               C256 404 256 350 246 296 Z"/>
-      <path d="M298 296 C308 350 308 404 296 440 C293 450 271 450 268 440
-               C256 404 256 350 266 296 Z"/>
+      <path d="M204 292 C191 352 191 414 206 456 C210 468 244 468 248 456
+               C263 414 263 352 250 292 Z"/>
+      <path d="M308 292 C321 352 321 414 306 456 C302 468 268 468 264 456
+               C249 414 249 352 262 292 Z"/>
     </g>
 
     <!-- bilobed muzzle pad -->
