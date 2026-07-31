@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <clipPath id="tile"><rect x="16" y="16" width="480" height="480" rx="108"/></clipPath>
+    <pattern id="argyle" width="120" height="160" patternUnits="userSpaceOnUse">
+      <rect width="120" height="160" fill="#0A1018"/>
+      <polygon points="60,0 120,80 60,160 0,80" fill="#23344A"/>
+      <polygon points="0,0 60,80 0,160" fill="#16222F"/>
+      <polygon points="120,0 60,80 120,160" fill="#16222F"/>
+      <g stroke="#7CA0C8" stroke-width="2" opacity="0.30" stroke-dasharray="6 7">
+        <path d="M60 -80 L200 80 M60 -80 L-80 80 M60 80 L200 240 M60 80 L-80 240 M60 240 L200 400 M60 240 L-80 400"/>
+      </g>
+    </pattern>
+  </defs>
+  <g clip-path="url(#tile)"><rect x="16" y="16" width="480" height="480" fill="url(#argyle)"/></g>
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="#2BD3D3" stroke-width="6"/>
+  <!-- walrus: domed head, muzzle, two tusks, whiskers -->
+  <g>
+    <!-- head -->
+    <path d="M256 150 C322 150 366 196 366 258 C366 300 348 328 320 344 L192 344 C164 328 146 300 146 258 C146 196 190 150 256 150 Z" fill="#7CA0C8"/>
+    <!-- eyes -->
+    <circle cx="220" cy="232" r="12" fill="#0A1018"/>
+    <circle cx="292" cy="232" r="12" fill="#0A1018"/>
+    <!-- muzzle -->
+    <ellipse cx="256" cy="318" rx="74" ry="52" fill="#9FBEDC"/>
+    <!-- nose -->
+    <ellipse cx="256" cy="300" rx="20" ry="14" fill="#0A1018"/>
+    <!-- tusks -->
+    <path d="M232 344 C230 384 226 414 220 436 C214 414 214 378 218 344 Z" fill="#F4F7FB"/>
+    <path d="M280 344 C282 384 286 414 292 436 C298 414 298 378 294 344 Z" fill="#F4F7FB"/>
+    <!-- whiskers -->
+    <g stroke="#0A1018" stroke-width="4" stroke-linecap="round" opacity="0.65">
+      <path d="M212 322 q-40 6 -60 20"/>
+      <path d="M214 334 q-40 10 -58 28"/>
+      <path d="M300 322 q40 6 60 20"/>
+      <path d="M298 334 q40 10 58 28"/>
+    </g>
+  </g>
+</svg>
