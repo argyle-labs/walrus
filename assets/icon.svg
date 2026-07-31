@@ -29,13 +29,19 @@
       <path d="M280 180 Q306 166 332 182"/>
     </g>
 
-    <!-- eyes: dark with glossy catchlights -->
-    <ellipse cx="206" cy="212" rx="17" ry="21" fill="#0B1622"/>
-    <ellipse cx="306" cy="212" rx="17" ry="21" fill="#0B1622"/>
-    <circle cx="213" cy="204" r="7" fill="#EAF1F8"/>
-    <circle cx="313" cy="204" r="7" fill="#EAF1F8"/>
-    <circle cx="200" cy="219" r="3.5" fill="#EAF1F8"/>
-    <circle cx="300" cy="219" r="3.5" fill="#EAF1F8"/>
+    <!-- eyes: dark with a small soft highlight (not glossy) -->
+    <ellipse cx="206" cy="212" rx="16" ry="19" fill="#0B1622"/>
+    <ellipse cx="306" cy="212" rx="16" ry="19" fill="#0B1622"/>
+    <circle cx="211" cy="205" r="4" fill="#EAF1F8" opacity="0.9"/>
+    <circle cx="311" cy="205" r="4" fill="#EAF1F8" opacity="0.9"/>
+
+    <!-- tusks: drawn BEFORE the muzzle so their tops tuck behind it -->
+    <g fill="#F1F5FA" stroke="#0B1622" stroke-width="6" stroke-linejoin="round">
+      <path d="M214 296 C204 350 204 404 216 440 C219 450 241 450 244 440
+               C256 404 256 350 246 296 Z"/>
+      <path d="M298 296 C308 350 308 404 296 440 C293 450 271 450 268 440
+               C256 404 256 350 266 296 Z"/>
+    </g>
 
     <!-- bilobed muzzle pad -->
     <path d="M158 306
@@ -61,14 +67,6 @@
       <circle cx="194" cy="342" r="4"/><circle cx="218" cy="348" r="4"/>
       <circle cx="328" cy="316" r="4"/><circle cx="304" cy="324" r="4"/><circle cx="280" cy="318" r="4"/>
       <circle cx="318" cy="342" r="4"/><circle cx="294" cy="348" r="4"/>
-    </g>
-
-    <!-- tusks -->
-    <g fill="#EAF1F8" stroke="#0B1622" stroke-width="5">
-      <path d="M236 348 C226 376 220 402 225 418 C226 425 214 425 211 417
-               C204 396 213 368 224 348 Z"/>
-      <path d="M276 348 C286 376 292 402 287 418 C286 425 298 425 301 417
-               C308 396 299 368 288 348 Z"/>
     </g>
   </g>
 </svg>
