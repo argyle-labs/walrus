@@ -22,12 +22,12 @@ path = "src/main.rs"
 # domain backend (src/registration.rs). It inspects the local macOS box and emits
 # typed findings + repairs through orca's diagnostics contract.
 [dependencies]
-plugin-toolkit = { git = "https://github.com/argyle-labs/orca", branch = "main" }
+plugin-toolkit = { git = "https://github.com/argyle-labs/orca", tag = "v0.1.7-rc.1" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 
 [dev-dependencies]
-plugin-toolkit = { git = "https://github.com/argyle-labs/orca", branch = "main" }
+plugin-toolkit = { git = "https://github.com/argyle-labs/orca", tag = "v0.1.7-rc.1" }
 
 [lints.clippy]
 let_underscore_must_use = "deny"
