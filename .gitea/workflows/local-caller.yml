@@ -1,5 +1,0 @@
-name: local-caller
-on: push
-jobs:
-  call:
-    uses: ./.gitea/workflows/local-reusable.yml
