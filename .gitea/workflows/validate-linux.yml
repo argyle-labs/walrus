@@ -1,0 +1,51 @@
+name: validate-linux
+on: [push]
+jobs:
+  rust-public-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install rust
+        run: |
+          set -eux
+          curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain stable
+          . "$HOME/.cargo/env"; rustc --version; cargo --version
+      - name: real cargo build with public deps
+        run: |
+          set -eux
+          . "$HOME/.cargo/env"
+          P=$(mktemp -d); cd "$P"
+          cat > Cargo.toml <<'EOF'
+[package]
+name = "vpub"
+version = "0.0.0"
+edition = "2021"
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+EOF
+          mkdir src
+          cat > src/main.rs <<'EOF'
+use serde::Serialize;
+#[derive(Serialize)]
+struct S { ok: bool, n: u32 }
+fn main() {
+    let s = S { ok: true, n: 42 };
+    println!("{}", serde_json::to_string(&s).unwrap());
+}
+EOF
+          cargo build --release
+          ./target/release/vpub
+  rust-private-dep-fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch private plugin-toolkit source (needs ORCA_FETCH_TOKEN)
+        env:
+          ORCA_FETCH_TOKEN: ${{ secrets.ORCA_FETCH_TOKEN }}
+        run: |
+          set -eux
+          if [ -z "${ORCA_FETCH_TOKEN}" ]; then
+            echo "ORCA_FETCH_TOKEN is EMPTY on Gitea"; 
+          fi
+          git config --global url."https://x-access-token:${ORCA_FETCH_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git clone --depth 1 https://github.com/argyle-labs/orca /tmp/orca_priv
+          echo "PRIVATE CLONE OK"; ls /tmp/orca_priv | head
