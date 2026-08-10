@@ -1,0 +1,11 @@
+name: smoke
+on:
+  push:
+    paths: [.gitea/workflows/smoke.yml]
+  workflow_dispatch: {}
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "gitea actions OK on $(uname -sm)"
+      - run: node --version || echo "no node"
