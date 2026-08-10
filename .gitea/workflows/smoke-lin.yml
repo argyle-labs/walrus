@@ -1,7 +1,0 @@
-name: smoke-lin-fresh
-on: push
-jobs:
-  lin:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "LINUX smoke $(uname -a)"
