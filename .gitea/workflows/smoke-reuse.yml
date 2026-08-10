@@ -1,0 +1,5 @@
+name: smoke-reuse
+on: push
+jobs:
+  call:
+    uses: argyle-labs/.github/.github/workflows/_smoke-reusable.yml@main
