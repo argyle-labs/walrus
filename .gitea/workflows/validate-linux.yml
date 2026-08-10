@@ -4,35 +4,14 @@ jobs:
   rust-public-build:
     runs-on: ubuntu-latest
     steps:
-      - name: install rust
+      - name: install rust and real build with public deps
         run: |
           set -eux
           curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain stable
           . "$HOME/.cargo/env"; rustc --version; cargo --version
-      - name: real cargo build with public deps
-        run: |
-          set -eux
-          . "$HOME/.cargo/env"
-          P=$(mktemp -d); cd "$P"
-          cat > Cargo.toml <<'EOF'
-[package]
-name = "vpub"
-version = "0.0.0"
-edition = "2021"
-[dependencies]
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-EOF
-          mkdir src
-          cat > src/main.rs <<'EOF'
-use serde::Serialize;
-#[derive(Serialize)]
-struct S { ok: bool, n: u32 }
-fn main() {
-    let s = S { ok: true, n: 42 };
-    println!("{}", serde_json::to_string(&s).unwrap());
-}
-EOF
+          P=$(mktemp -d); cd "$P"; mkdir src
+          printf '[package]\nname="vpub"\nversion="0.0.0"\nedition="2021"\n[dependencies]\nserde={version="1",features=["derive"]}\nserde_json="1"\n' > Cargo.toml
+          printf 'use serde::Serialize;\n#[derive(Serialize)]\nstruct S{ok:bool,n:u32}\nfn main(){let s=S{ok:true,n:42};println!("{}",serde_json::to_string(&s).unwrap());}\n' > src/main.rs
           cargo build --release
           ./target/release/vpub
   rust-private-dep-fetch:
@@ -43,9 +22,7 @@ EOF
           ORCA_FETCH_TOKEN: ${{ secrets.ORCA_FETCH_TOKEN }}
         run: |
           set -eux
-          if [ -z "${ORCA_FETCH_TOKEN}" ]; then
-            echo "ORCA_FETCH_TOKEN is EMPTY on Gitea"; 
-          fi
+          test -n "${ORCA_FETCH_TOKEN}" || { echo "ORCA_FETCH_TOKEN EMPTY on Gitea"; exit 7; }
           git config --global url."https://x-access-token:${ORCA_FETCH_TOKEN}@github.com/".insteadOf "https://github.com/"
           git clone --depth 1 https://github.com/argyle-labs/orca /tmp/orca_priv
           echo "PRIVATE CLONE OK"; ls /tmp/orca_priv | head
