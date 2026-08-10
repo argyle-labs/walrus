@@ -1,0 +1,11 @@
+name: validate-resume
+on: [push]
+jobs:
+  linux-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "frigg resumed on $(uname -a)"; test -x "$(command -v bash)"
+  macos-resume:
+    runs-on: macos-14
+    steps:
+      - run: echo "mint resumed on $(uname -a)"; sw_vers 2>/dev/null || true
