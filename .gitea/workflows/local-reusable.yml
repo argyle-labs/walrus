@@ -1,8 +1,0 @@
-name: local-reusable
-on:
-  workflow_call:
-jobs:
-  r:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "same-repo reusable OK"
