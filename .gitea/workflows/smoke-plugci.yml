@@ -1,0 +1,6 @@
+name: smoke-plugin-ci-resolve
+on: push
+jobs:
+  ci:
+    uses: argyle-labs/.github/.github/workflows/plugin-ci.yml@main
+    secrets: inherit
