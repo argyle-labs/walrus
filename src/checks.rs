@@ -9,10 +9,30 @@
 use std::path::PathBuf;
 use std::process::Command;
 
+use plugin_toolkit::anyhow::Result;
+use plugin_toolkit::contract::BoxFuture;
 use plugin_toolkit::contract::diagnostics::{
-    DiagnoseArgs, Finding, RepairArgs, RepairOutcome, RepairSpec, Severity,
+    DiagnoseArgs, DiagnosticsProvider, Finding, RepairArgs, RepairOutcome, RepairSpec, Severity,
 };
-use plugin_toolkit::serde_json;
+
+/// Typed [`DiagnosticsProvider`] for the walrus macOS workstation backend.
+/// Wraps the synchronous check/repair logic below in the async trait surface;
+/// the toolkit's `diagnostics::dispatch_op` handles op routing + arg codec.
+pub struct WalrusDiagnostics;
+
+impl DiagnosticsProvider for WalrusDiagnostics {
+    fn name(&self) -> &str {
+        crate::PROVIDER
+    }
+
+    fn diagnose(&self, args: DiagnoseArgs) -> BoxFuture<'_, Result<Vec<Finding>>> {
+        Box::pin(async move { Ok(diagnose(args)) })
+    }
+
+    fn repair(&self, args: RepairArgs) -> BoxFuture<'_, Result<RepairOutcome>> {
+        Box::pin(async move { Ok(repair(args)) })
+    }
+}
 
 /// Homebrew formulae (the setup.sh base toolchain).
 const FORMULAE: &[&str] = &[
@@ -30,14 +50,9 @@ const CASKS: &[&str] = &["1password-cli", "google-cloud-sdk", "iterm2"];
 
 // ── diagnose ─────────────────────────────────────────────────────────────────
 
-/// Run every check and return the findings as JSON (`Vec<Finding>`).
-pub fn diagnose(args_json: &str) -> Result<String, String> {
-    let _: DiagnoseArgs = if args_json.trim().is_empty() {
-        DiagnoseArgs::default()
-    } else {
-        serde_json::from_str(args_json).unwrap_or_default()
-    };
-    let findings: Vec<Finding> = [
+/// Run every check and return the findings.
+pub fn diagnose(_args: DiagnoseArgs) -> Vec<Finding> {
+    [
         check_homebrew(),
         check_formulae(),
         check_casks(),
@@ -50,8 +65,7 @@ pub fn diagnose(args_json: &str) -> Result<String, String> {
     ]
     .into_iter()
     .flatten()
-    .collect();
-    serde_json::to_string(&findings).map_err(|e| format!("encode findings: {e}"))
+    .collect()
 }
 
 fn finding(
@@ -425,10 +439,8 @@ fn check_power_sleep() -> Option<Finding> {
 
 // ── repair ───────────────────────────────────────────────────────────────────
 
-/// Run one repair by id and return a [`RepairOutcome`] as JSON.
-pub fn repair(args_json: &str) -> Result<String, String> {
-    let args: RepairArgs =
-        serde_json::from_str(args_json).map_err(|e| format!("invalid repair args: {e}"))?;
+/// Run one repair by id and return a [`RepairOutcome`].
+pub fn repair(args: RepairArgs) -> RepairOutcome {
     let (ok, message) = match args.repair_id.as_str() {
         "homebrew" => repair_homebrew(),
         "formulae" => repair_formulae(),
@@ -439,13 +451,12 @@ pub fn repair(args_json: &str) -> Result<String, String> {
         "spotlight-nfs" => repair_spotlight_nfs(),
         other => (false, format!("walrus has no repair '{other}'")),
     };
-    let outcome = RepairOutcome {
+    RepairOutcome {
         id: args.repair_id,
         provider: crate::PROVIDER.to_string(),
         ok,
         message,
-    };
-    serde_json::to_string(&outcome).map_err(|e| format!("encode outcome: {e}"))
+    }
 }
 
 fn repair_homebrew() -> (bool, String) {
@@ -735,9 +746,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn diagnose_emits_valid_json_array() {
-        let out = diagnose("{}").expect("diagnose ok");
-        let findings: Vec<Finding> = serde_json::from_str(&out).expect("valid findings json");
+    fn diagnose_emits_valid_findings() {
+        let findings = diagnose(DiagnoseArgs::default());
         for f in &findings {
             assert_eq!(f.provider, crate::PROVIDER);
         }
@@ -745,8 +755,11 @@ mod tests {
 
     #[test]
     fn repair_unknown_id_reports_not_ok() {
-        let out = repair(r#"{"provider":"walrus","repair_id":"nope"}"#).expect("encodes");
-        let o: RepairOutcome = serde_json::from_str(&out).unwrap();
+        let o = repair(RepairArgs {
+            provider: "walrus".to_string(),
+            repair_id: "nope".to_string(),
+            confirm: false,
+        });
         assert!(!o.ok);
         assert!(o.message.contains("no repair"));
     }
