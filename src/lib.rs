@@ -6,11 +6,11 @@
 //! [`plugin_toolkit::contract::diagnostics::Finding`]s — each with an optional
 //! repair the operator can run via `orca diagnostics repair`.
 //!
-//! Detection + remediation lives in [`checks`]; [`registration`] wires it to the
-//! diagnostics domain. Served over the orca socket from the `walrus` binary.
+//! Detection + remediation lives in [`checks`], which also exposes the typed
+//! [`checks::WalrusDiagnostics`] provider wired to the diagnostics domain via the
+//! `Plugin` builder. Served over the orca socket from the `walrus` binary.
 
 pub mod checks;
-pub mod registration;
 
 /// Registry name this plugin uses across the diagnostics domain.
 pub const PROVIDER: &str = "walrus";
