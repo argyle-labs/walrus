@@ -3508,8 +3508,6 @@ name = "walrus"
 version = "0.1.0"
 dependencies = [
  "plugin-toolkit",
- "serde",
- "serde_json",
 ]
 
 [[package]]
